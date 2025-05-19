@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
 import TextFonts from '@/app/fonts/fonts'
 
 interface Experience {
@@ -47,59 +48,135 @@ const experiences: Experience[] = [
       "Contributed to real-world client projects with strong UI/UX collaboration."
     ]
   }
-];
+]
 
+const ExperienceItem = ({ experience, index }: { experience: Experience; index: number }) => {
+  const [expanded, setExpanded] = useState(false)
+  const displayedResponsibilities = expanded ? experience.responsibilities : experience.responsibilities.slice(0, 2)
+
+  return (
+    <motion.article
+      role="region"
+      aria-labelledby={`experience-title-${index}`}
+      tabIndex={0}
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 }
+      }}
+      className="
+        bg-gray-50 rounded-lg p-6 shadow border border-gray-200 cursor-default
+        focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-indigo-50
+        transition duration-200 ease-in-out hover:shadow-md
+      "
+    >
+      <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+        <div>
+          <h3 id={`experience-title-${index}`} className="text-xl font-semibold text-gray-800">
+            {experience.title}
+          </h3>
+          <p className="text-sm text-gray-500 mt-1">{experience.company}</p>
+        </div>
+        <div className="text-sm text-gray-500 mt-4 md:mt-0 text-right">
+          <p>{experience.period}</p>
+          <p>{experience.location}</p>
+        </div>
+      </header>
+
+      <ul
+        id={`responsibilities-list-${index}`}
+        className="list-disc list-inside space-y-3 text-gray-700 text-base leading-relaxed"
+      >
+        <AnimatePresence initial={false}>
+          {displayedResponsibilities.map((resp, idx) => (
+            <motion.li
+              key={idx}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="flex items-start overflow-hidden"
+            >
+<span className="mr-3 mt-1 text-lg leading-none text-black">•</span>
+<p>{resp}</p>
+            </motion.li>
+          ))}
+        </AnimatePresence>
+      </ul>
+
+      {experience.responsibilities.length > 2 && (
+     <button
+     onClick={() => setExpanded(!expanded)}
+     aria-expanded={expanded}
+     aria-controls={`responsibilities-list-${index}`}
+     className={`mt-6 rounded px-4 py-2 font-semibold focus:outline-none bg-white ${
+       expanded ? '' : 'border-0'
+     }`}
+     style={
+       expanded
+         ? {
+             borderWidth: '2px',
+             borderStyle: 'solid',
+             borderColor: 'transparent',
+             borderImageSlice: 1,
+             borderImageSource: 'linear-gradient(to right, #29609C, #AA84AE, #F472B6)',
+             color: '#000', // normal text color for expanded
+           }
+         : {
+             border: 'none',
+             background: 'none',
+             backgroundClip: 'text',
+             WebkitBackgroundClip: 'text',
+             color: 'transparent',
+             backgroundImage: 'linear-gradient(to right, #29609C, #AA84AE, #F472B6)',
+             borderImageSlice: 0,
+           }
+     }
+   >
+     {expanded ? 'Show less' : 'Show more'}
+   </button>
+   
+      
+
+  
+  
+   
+    
+      )}
+    </motion.article>
+  )
+}
 
 const WorkExperience = () => {
   return (
-    <div className=" flex justify-center px-4 sm:px-6 lg:px-8">
+    <section
+      id="work-experience"
+      className="flex justify-center px-4 sm:px-6 lg:px-8 py-12 bg-white"
+    >
       <div className="w-full max-w-4xl">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className={`text-3xl font-bold mt-20 ${TextFonts.JostFont.className}`}
+          className={`text-3xl font-extrabold mb-12 text-neutral-900 ${TextFonts.JostFont.className}`}
         >
           WORK EXPERIENCE
         </motion.h2>
+
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="mt-8 space-y-8"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
+          }}
+          className="space-y-10"
         >
-          {experiences.map((experience, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 * (index + 1), duration: 0.8 }}
-              className="bg-gray-50 border border-black/[0.1] rounded-xl p-6"
-            >
-              <div className="flex flex-col md:flex-row justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-bold text-neutral-600">{experience.title}</h3>
-                  <p className="text-neutral-500">{experience.company}</p>
-                </div>
-                <div className="text-right mt-2 md:mt-0">
-                  <p className="text-neutral-500">{experience.period}</p>
-                  <p className="text-neutral-500">{experience.location}</p>
-                </div>
-              </div>
-              <ul className="space-y-2 text-neutral-600">
-                {experience.responsibilities.map((responsibility, idx) => (
-                  <li key={idx} className="flex items-start">
-                    <span className="mr-2">•</span>
-                    <span>{responsibility}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+          {experiences.map((experience, i) => (
+            <ExperienceItem key={i} experience={experience} index={i} />
           ))}
         </motion.div>
       </div>
-    </div>
-  );
-};
+    </section>
+  )
+}
 
-export default WorkExperience;
+export default WorkExperience

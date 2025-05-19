@@ -1,73 +1,171 @@
-'use client'
+"use client";
 
-import TextFonts from '@/app/fonts/fonts'
-import { motion } from 'framer-motion'
-import { Github, Linkedin, Twitter } from 'lucide-react'
-import Link from 'next/link'
-import { useTypingEffect } from '../../hooks/useTypingEffect'
+import TextFonts from "@/app/fonts/fonts";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Twitter } from "lucide-react";
+import Link from "next/link";
+import { useTypingEffect } from "../../hooks/useTypingEffect";
 
 export default function Intro() {
-  const typedText = useTypingEffect(['Flutter', 'Firebase', 'Figma'], 100, 50, 1500)
+  const typedText = useTypingEffect(
+    ["Flutter", "Firebase", "Figma"],
+    100,
+    50,
+    1500
+  );
 
   return (
-    <div className="min-h-fit flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
-      <div className="w-full max-w-4xl">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-8">
-          <motion.div className="flex-1">
-            <motion.h1
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className={`text-2xl sm:text-3xl font-bold mb-4 ${TextFonts.JostFont.className}`}
+    <>
+      <main
+        className="min-h-fit flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12"
+        role="main"
+        aria-label="Introduction section"
+      >
+        <div className="w-full max-w-4xl">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-8">
+            <motion.section
+              className="flex-1"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { staggerChildren: 0.15 },
+                },
+              }}
             >
-              Ajay Kumar
-            </motion.h1>
+              <motion.h1
+                variants={{
+                  visible: { y: 0, opacity: 1 },
+                  hidden: { y: 20, opacity: 0 },
+                }}
+                transition={{ duration: 0.8 }}
+                className={`text-3xl sm:text-4xl font-extrabold mb-5 leading-tight tracking-tight ${TextFonts.JostFont.className} text-transparent bg-clip-text animated-gradient-text`}
+                style={{
+                backgroundImage:
+                    "linear-gradient(to right, #29609C, #AA84AE, #F472B6)",
+                }}
+              >
+                Ajay Kumar
+              </motion.h1>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-gray-600 text-sm sm:text-base mb-6"
-            >
-              <span>ajaykumar.devdesign@gmail.com | Una, Himachal Pradesh, India</span>
-            </motion.div>
+              <motion.address
+                variants={{ visible: { opacity: 1 }, hidden: { opacity: 0 } }}
+                className="not-italic text-gray-700 text-base mb-8"
+              >
+                <a
+                  href="mailto:ajaykumar.devdesign@gmail.com"
+                  className="hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded"
+                >
+                  ajaykumar.devdesign@gmail.com
+                </a>{" "}
+                | Una, Himachal Pradesh, India
+              </motion.address>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="flex gap-4 mb-8"
-            >
-              <Link href="https://x.com/AjayRana78767" target="_blank" className="text-gray-600 hover:text-gray-900">
-                <Twitter className="w-5 h-5" />
-              </Link>
-              <Link href="https://www.linkedin.com/in/ajay-kumar-02b9b525b/" target="_blank" className="text-gray-600 hover:text-gray-900">
-                <Linkedin className="w-5 h-5" />
-              </Link>
-              <Link href="https://github.com/ajayrana78767" target="_blank" className="text-gray-600 hover:text-gray-900">
-                <Github className="w-5 h-5" />
-              </Link>
-            </motion.div>
+              <motion.nav
+                variants={{ visible: { opacity: 1 }, hidden: { opacity: 0 } }}
+                className="flex gap-6 mb-10"
+                aria-label="Social media links"
+              >
+                {[
+                  {
+                    href: "https://x.com/AjayRana78767",
+                    icon: <Twitter className="w-6 h-6" />,
+                    label: "Twitter profile",
+                  },
+                  {
+                    href: "https://www.linkedin.com/in/ajay-kumar-02b9b525b/",
+                    icon: <Linkedin className="w-6 h-6" />,
+                    label: "LinkedIn profile",
+                  },
+                  {
+                    href: "https://github.com/ajayrana78767",
+                    icon: <Github className="w-6 h-6" />,
+                    label: "GitHub profile",
+                  },
+                ].map(({ href, icon, label }) => (
+                  <Link
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="p-2 rounded-full border border-gray-300 transition duration-300"
+                    onMouseEnter={(e) => {
+                      const el = e.currentTarget as HTMLAnchorElement;
+                      el.style.borderImage =
+                        "linear-gradient(to right, #29609C, #AA84AE, #F472B6)";
+                      el.style.borderImageSlice = "1";
+                    }}
+                    onMouseLeave={(e) => {
+                      const el = e.currentTarget as HTMLAnchorElement;
+                      el.style.borderImage = "";
+                      el.style.borderImageSlice = "";
+                      el.style.borderColor = "#D1D5DB"; // Tailwind border-gray-300
+                    }}
+                  >
+                    {icon}
+                  </Link>
+                ))}
+              </motion.nav>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="space-y-4 text-gray-700 text-sm sm:text-base"
-            >
-              <p>
-                Hi, I’m Ajay — a Flutter Developer & UI/UX Designer with 1.5+ years of experience in building clean, fast, and responsive mobile apps.
-              </p>
+              <motion.article
+                variants={{
+                  visible: { opacity: 1, y: 0 },
+                  hidden: { opacity: 0, y: 20 },
+                }}
+                className="space-y-6 text-gray-800 text-base sm:text-lg leading-relaxed"
+              >
+                <p>
+                  Hi, I’m Ajay — a Flutter Developer & UI/UX Designer with 1.5+
+                  years of experience in building clean, fast, and responsive
+                  mobile apps.
+                </p>
 
-              <ul className="space-y-3">
-                <li>• Skilled in <span className="font-semibold">{typedText}</span> technologies</li>
-                <li>• Open to full-time and freelance opportunities</li>
-                <li>• Passionate about crafting beautiful user experiences</li>
-              </ul>
-            </motion.div>
-          </motion.div>
+                <ul className="space-y-3 list-disc list-inside">
+                  <li>
+                    Skilled in{" "}
+                    <span
+                      className="font-semibold text-transparent bg-clip-text animated-gradient-text"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(to right, #29609C, #AA84AE, #F472B6)",
+                      }}
+                    >
+                      {typedText}
+                    </span>{" "}
+                    technologies
+                  </li>
+                  <li>Open to full-time and freelance opportunities</li>
+                  <li>Passionate about crafting beautiful user experiences</li>
+                </ul>
+              </motion.article>
+            </motion.section>
+          </div>
         </div>
-      </div>
-    </div>
-  )
+      </main>
+
+      {/* Add this style block to animate the gradient */}
+      {/* <style jsx>{`
+        @keyframes gradient-animation {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+
+        .animated-gradient-text {
+          background-size: 200% 200%;
+          animation: gradient-animation 6s ease infinite;
+        }
+      `}</style> */}
+    </>
+  );
 }
