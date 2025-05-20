@@ -24,16 +24,16 @@ interface Project {
   };
   images: string[];
 }
-
 const projects: Project[] = [
   {
     title: "Airline Miles Calculator",
     description:
-      "A utility app that calculates airline miles you can earn or redeem.",
+      "A mobile app that helps users easily calculate how many airline miles they can earn or redeem on different airlines.",
     category: "Flutter",
     features: [
-      "Used Provider for state management and WebView for airline policies.",
-      "Integrated Tawk.to chat and Firebase for hosting.",
+      "50+ downloads with a 4+ rating on Android & iOS.",
+      "Used Provider and Tawk.to to boost engagement by 30%.",
+      "Enhanced UI and performance for better user experience.",
     ],
     links: {
       playstore:
@@ -41,48 +41,99 @@ const projects: Project[] = [
       appstore:
         "https://apps.apple.com/us/app/airline-miles-calculator/id6497861466",
     },
-    images: ["/images/4.jpg"],
+    images: ["/images/project_1.png"],
   },
   {
     title: "Westgate Pest Control",
-    description: "Responsive Flutter web app for pest control services.",
+    description:
+      "A responsive web app for pest control services, inspired by westgatepestcontrol.com.au and built with Flutter and Firebase.",
     category: "Flutter",
     features: [
-      "Built using Flutter Web and Firebase.",
-      "Shimmer effects and dynamic Firestore content.",
+      "Attracted 100+ visitors in the first month of launch.",
+      "Fully dynamic content powered by Firebase & Firestore with 99.9% uptime.",
+      "Improved user experience with Shimmer animations and smooth UI components.",
     ],
     links: {
-      demo: "https://westgatepest.web.app/",
+      demo: "https://westgate-pest-control.web.app/",
     },
     images: ["/images/1.jpg"],
   },
   {
     title: "Attendance Tracker",
-    description: "Internal tool for attendance marking and leave tracking.",
+    description:
+      "A Flutter app for attendance marking and leave tracking, used by 50+ employees with great feedback.",
     category: "Flutter",
     features: [
-      "Table Calendar, SharedPreferences, Firebase Auth.",
-      "Local caching improved performance by 30%.",
+      "Integrated Provider and SharedPreferences, cutting data load time by 30%.",
+      "Enhanced UI with Table Calendar and smooth animations, earning 90%+ positive feedback.",
     ],
     links: {
       github: "https://github.com/your-username/attendance-tracker",
     },
     images: ["/images/2.jpg"],
+  }
+,  
+  {
+    title: "VendorHub",
+    description:
+      "Multi-vendor service app built with Flutter using Provider and Dio.",
+    category: "Flutter",
+    features: [
+      "Flutter + Dio for API integration.",
+      "Provider for scalable state management.",
+      "Vendor selection, web support, custom UI components.",
+    ],
+    links: {
+      github: "https://github.com/your-username/vendorhub",
+    },
+    images: ["/images/vendorhub.jpg"],
+  },
+  {
+    title: "Pizza Deck",
+    description:
+      "A Flutter food ordering app available on Android, iOS, and Web.",
+    category: "Flutter",
+    features: [
+      "SliverAppBar, SnakeNavBar, login/OTP screens, Dio API integration.",
+      "Custom snackbars, responsive UI, animated splash screen.",
+      "Supports Play Store, App Store, and Web.",
+    ],
+    links: {
+      playstore:
+        "https://play.google.com/store/apps/details?id=com.example.pizzadeck",
+    },
+    images: ["/images/pizzadeck.jpg"],
   },
   {
     title: "Digital Farmer (In Design)",
     description: "A dashboard concept for a farming management system.",
     category: "UI/UX",
     features: [
-      "Figma UI dashboard design with widgets, charts, and accessible layout.",
-      "Firebase Auth and REST APIs planned.",
+      "Figma UI dashboard with charts, widgets, and form flows.",
+      "Modular components and clean design system.",
+      "Integrated auth flow and responsive layout plans.",
     ],
     links: {
       figma: "https://www.figma.com/file/your-design-link",
     },
     images: ["/images/3.jpg"],
   },
-  {title: "Graphic Design Showcase",
+  {
+    title: "Mileage Calculator UI",
+    description: "UI/UX design for a cross-platform mileage tracking app.",
+    category: "UI/UX",
+    features: [
+      "Clean layout with brand color #40B7A1.",
+      "Designed screens: dashboard, input forms, history view.",
+      "Mobile-first with Web scalability.",
+    ],
+    links: {
+      figma: "https://www.figma.com/file/mileage-calculator-design",
+    },
+    images: ["/images/mileage.jpg"],
+  },
+  {
+    title: "Graphic Design Showcase",
     description:
       "Creative posters and banners crafted with Figma, Photoshop, and Canva to elevate brands.",
     category: "Graphic",
@@ -91,13 +142,87 @@ const projects: Project[] = [
       "Expert use of Figma, Photoshop & Canva.",
       "Designed for strong brand presence.",
     ],
-
     links: {
       graphic: "https://your-graphic-design-link.com",
     },
     images: ["/images/Graphic.jpg"],
   },
 ];
+
+
+// const projects: Project[] = [
+//   {
+//     title: "Airline Miles Calculator",
+//     description:
+//       "A utility app that calculates airline miles you can earn or redeem.",
+//     category: "Flutter",
+//     features: [
+//       "Used Provider for state management and WebView for airline policies.",
+//       "Integrated Tawk.to chat and Firebase for hosting.",
+//     ],
+//     links: {
+//       playstore:
+//         "https://play.google.com/store/apps/details?id=com.flightwithmiles.AirlineMilesCalculator",
+//       appstore:
+//         "https://apps.apple.com/us/app/airline-miles-calculator/id6497861466",
+//     },
+//     images: ["/images/4.jpg"],
+//   },
+//   {
+//     title: "Westgate Pest Control",
+//     description: "Responsive Flutter web app for pest control services.",
+//     category: "Flutter",
+//     features: [
+//       "Built using Flutter Web and Firebase.",
+//       "Shimmer effects and dynamic Firestore content.",
+//     ],
+//     links: {
+//       demo: "https://westgatepest.web.app/",
+//     },
+//     images: ["/images/1.jpg"],
+//   },
+//   {
+//     title: "Attendance Tracker",
+//     description: "Internal tool for attendance marking and leave tracking.",
+//     category: "Flutter",
+//     features: [
+//       "Table Calendar, SharedPreferences, Firebase Auth.",
+//       "Local caching improved performance by 30%.",
+//     ],
+//     links: {
+//       github: "https://github.com/your-username/attendance-tracker",
+//     },
+//     images: ["/images/2.jpg"],
+//   },
+//   {
+//     title: "Digital Farmer (In Design)",
+//     description: "A dashboard concept for a farming management system.",
+//     category: "UI/UX",
+//     features: [
+//       "Figma UI dashboard design with widgets, charts, and accessible layout.",
+//       "Firebase Auth and REST APIs planned.",
+//     ],
+//     links: {
+//       figma: "https://www.figma.com/file/your-design-link",
+//     },
+//     images: ["/images/3.jpg"],
+//   },
+//   {title: "Graphic Design Showcase",
+//     description:
+//       "Creative posters and banners crafted with Figma, Photoshop, and Canva to elevate brands.",
+//     category: "Graphic",
+//     features: [
+//       "Eye-catching posters and banners.",
+//       "Expert use of Figma, Photoshop & Canva.",
+//       "Designed for strong brand presence.",
+//     ],
+
+//     links: {
+//       graphic: "https://your-graphic-design-link.com",
+//     },
+//     images: ["/images/Graphic.jpg"],
+//   },
+// ];
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
