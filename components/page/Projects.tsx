@@ -71,8 +71,7 @@ const projects: Project[] = [
       github: "https://github.com/your-username/attendance-tracker",
     },
     images: ["/images/2.jpg"],
-  }
-,  
+  },
   {
     title: "VendorHub",
     description:
@@ -131,6 +130,22 @@ const projects: Project[] = [
       figma: "https://www.figma.com/file/mileage-calculator-design",
     },
     images: ["/images/mileage.jpg"],
+  },
+  {
+    title: "MOHVAX – Child Vaccination App",
+    description:
+      "A mobile app design tackling parenting challenges like vaccine tracking, health records, and growth tips.",
+    category: "UI/UX",
+    features: [
+      "Helps parents track vaccinations and child growth.",
+      "Solves issues with vaccine schedules and health data.",
+      "Created the full UI/UX for the iOS team in collaboration with the client.",
+    ],
+    links: {
+      figma:
+        "https://www.figma.com/design/W92Qnrghryl6ItLkUZA8es/MOHVAX--A-Child-Vaccination-Mobile-App?node-id=0-1&t=MNTjMf7IKgt4cZ3g-1", // Replace with real Figma link
+    },
+    images: ["/images/mohvax.jpg"], // Replace with actual project image
   },
   {
     title: "Graphic Design Showcase",
