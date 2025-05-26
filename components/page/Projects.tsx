@@ -13,7 +13,7 @@ interface Project {
   title: string;
   description: string;
   features: string[];
-  category: "Flutter" | "UI/UX" | "Graphic";
+  categories: ("Flutter" | "UI/UX" | "Graphic")[];
   links: {
     demo?: string;
     github?: string;
@@ -29,7 +29,7 @@ const projects: Project[] = [
     title: "Airline Miles Calculator",
     description:
       "A mobile app that helps users easily calculate how many airline miles they can earn or redeem on different airlines.",
-    category: "Flutter",
+    categories: ["Flutter"],
     features: [
       "50+ downloads with a 4+ rating on Android & iOS.",
       "Used Provider and Tawk.to to boost engagement by 30%.",
@@ -41,31 +41,30 @@ const projects: Project[] = [
       appstore:
         "https://apps.apple.com/us/app/airline-miles-calculator/id6497861466",
     },
-    images: ["/images/project_1.png"],
+    images: ["/images/Airline_project.png"],
   },
   {
     title: "Westgate Pest Control",
-    description:
-      "A responsive web app for pest control services, inspired by westgatepestcontrol.com.au and built with Flutter and Firebase.",
-    category: "Flutter",
+    description: "A responsive web app for pest control services built with Flutter and Firebase.",
+    categories: ["Flutter"],
     features: [
-      "Attracted 100+ visitors in the first month of launch.",
-      "Fully dynamic content powered by Firebase & Firestore with 99.9% uptime.",
-      "Improved user experience with Shimmer animations and smooth UI components.",
+      "100+ visitors in first month with 99.9% uptime.",
+      "Shimmer animations and smooth UI components.",
+      "Responsive design across all devices.",
     ],
     links: {
       demo: "https://westgate-pest-control.web.app/",
     },
-    images: ["/images/1.jpg"],
+    images: ["/images/westgate_project.png"],
   },
   {
     title: "Attendance Tracker",
-    description:
-      "A Flutter app for attendance marking and leave tracking, used by 50+ employees with great feedback.",
-    category: "Flutter",
+    description: "A Flutter app for attendance marking and leave tracking.",
+    categories: ["Flutter"],
     features: [
-      "Integrated Provider and SharedPreferences, cutting data load time by 30%.",
-      "Enhanced UI with Table Calendar and smooth animations, earning 90%+ positive feedback.",
+      "Provider and SharedPreferences for fast data loading.",
+      "Table Calendar with smooth animations.",
+      "Real-time attendance tracking.",
     ],
     links: {
       github: "https://github.com/your-username/attendance-tracker",
@@ -76,7 +75,7 @@ const projects: Project[] = [
     title: "VendorHub",
     description:
       "Multi-vendor service app built with Flutter using Provider and Dio.",
-    category: "Flutter",
+    categories: ["Flutter", "UI/UX"],
     features: [
       "Flutter + Dio for API integration.",
       "Provider for scalable state management.",
@@ -84,6 +83,7 @@ const projects: Project[] = [
     ],
     links: {
       github: "https://github.com/your-username/vendorhub",
+      figma: "https://www.figma.com/file/vendorhub-design",
     },
     images: ["/images/vendorhub.jpg"],
   },
@@ -91,7 +91,7 @@ const projects: Project[] = [
     title: "Pizza Deck",
     description:
       "A Flutter food ordering app available on Android, iOS, and Web.",
-    category: "Flutter",
+    categories: ["Flutter", "UI/UX"],
     features: [
       "SliverAppBar, SnakeNavBar, login/OTP screens, Dio API integration.",
       "Custom snackbars, responsive UI, animated splash screen.",
@@ -100,13 +100,14 @@ const projects: Project[] = [
     links: {
       playstore:
         "https://play.google.com/store/apps/details?id=com.example.pizzadeck",
+      figma: "https://www.figma.com/file/pizzadeck-design",
     },
     images: ["/images/pizzadeck.jpg"],
   },
   {
-    title: "Digital Farmer (In Design)",
+    title: "Digital Farmer",
     description: "A dashboard concept for a farming management system.",
-    category: "UI/UX",
+    categories: ["Flutter", "UI/UX"],
     features: [
       "Figma UI dashboard with charts, widgets, and form flows.",
       "Modular components and clean design system.",
@@ -114,44 +115,31 @@ const projects: Project[] = [
     ],
     links: {
       figma: "https://www.figma.com/file/your-design-link",
+       github: "https://github.com/your-username/attendance-tracker",
     },
     images: ["/images/3.jpg"],
   },
-  {
-    title: "Mileage Calculator UI",
-    description: "UI/UX design for a cross-platform mileage tracking app.",
-    category: "UI/UX",
-    features: [
-      "Clean layout with brand color #40B7A1.",
-      "Designed screens: dashboard, input forms, history view.",
-      "Mobile-first with Web scalability.",
-    ],
-    links: {
-      figma: "https://www.figma.com/file/mileage-calculator-design",
-    },
-    images: ["/images/mileage.jpg"],
-  },
+  
   {
     title: "MOHVAX – Child Vaccination App",
-    description:
-      "A mobile app design tackling parenting challenges like vaccine tracking, health records, and growth tips.",
-    category: "UI/UX",
+    description: "A mobile app design for tracking child vaccinations and health records.",
+    categories: ["UI/UX"],
     features: [
       "Helps parents track vaccinations and child growth.",
       "Solves issues with vaccine schedules and health data.",
-      "Created the full UI/UX for the iOS team in collaboration with the client.",
+      "Designed UI/UX for iOS team.",
     ],
     links: {
       figma:
-        "https://www.figma.com/design/W92Qnrghryl6ItLkUZA8es/MOHVAX--A-Child-Vaccination-Mobile-App?node-id=0-1&t=MNTjMf7IKgt4cZ3g-1", // Replace with real Figma link
+        "https://www.figma.com/design/W92Qnrghryl6ItLkUZA8es/MOHVAX--A-Child-Vaccination-Mobile-App?node-id=0-1&t=MNTjMf7IKgt4cZ3g-1",
     },
-    images: ["/images/mohvax.jpg"], // Replace with actual project image
+    images: ["/images/mohvax.jpg"],
   },
   {
     title: "Graphic Design Showcase",
     description:
       "Creative posters and banners crafted with Figma, Photoshop, and Canva to elevate brands.",
-    category: "Graphic",
+    categories: ["Graphic"],
     features: [
       "Eye-catching posters and banners.",
       "Expert use of Figma, Photoshop & Canva.",
@@ -164,88 +152,10 @@ const projects: Project[] = [
   },
 ];
 
-
-// const projects: Project[] = [
-//   {
-//     title: "Airline Miles Calculator",
-//     description:
-//       "A utility app that calculates airline miles you can earn or redeem.",
-//     category: "Flutter",
-//     features: [
-//       "Used Provider for state management and WebView for airline policies.",
-//       "Integrated Tawk.to chat and Firebase for hosting.",
-//     ],
-//     links: {
-//       playstore:
-//         "https://play.google.com/store/apps/details?id=com.flightwithmiles.AirlineMilesCalculator",
-//       appstore:
-//         "https://apps.apple.com/us/app/airline-miles-calculator/id6497861466",
-//     },
-//     images: ["/images/4.jpg"],
-//   },
-//   {
-//     title: "Westgate Pest Control",
-//     description: "Responsive Flutter web app for pest control services.",
-//     category: "Flutter",
-//     features: [
-//       "Built using Flutter Web and Firebase.",
-//       "Shimmer effects and dynamic Firestore content.",
-//     ],
-//     links: {
-//       demo: "https://westgatepest.web.app/",
-//     },
-//     images: ["/images/1.jpg"],
-//   },
-//   {
-//     title: "Attendance Tracker",
-//     description: "Internal tool for attendance marking and leave tracking.",
-//     category: "Flutter",
-//     features: [
-//       "Table Calendar, SharedPreferences, Firebase Auth.",
-//       "Local caching improved performance by 30%.",
-//     ],
-//     links: {
-//       github: "https://github.com/your-username/attendance-tracker",
-//     },
-//     images: ["/images/2.jpg"],
-//   },
-//   {
-//     title: "Digital Farmer (In Design)",
-//     description: "A dashboard concept for a farming management system.",
-//     category: "UI/UX",
-//     features: [
-//       "Figma UI dashboard design with widgets, charts, and accessible layout.",
-//       "Firebase Auth and REST APIs planned.",
-//     ],
-//     links: {
-//       figma: "https://www.figma.com/file/your-design-link",
-//     },
-//     images: ["/images/3.jpg"],
-//   },
-//   {title: "Graphic Design Showcase",
-//     description:
-//       "Creative posters and banners crafted with Figma, Photoshop, and Canva to elevate brands.",
-//     category: "Graphic",
-//     features: [
-//       "Eye-catching posters and banners.",
-//       "Expert use of Figma, Photoshop & Canva.",
-//       "Designed for strong brand presence.",
-//     ],
-
-//     links: {
-//       graphic: "https://your-graphic-design-link.com",
-//     },
-//     images: ["/images/Graphic.jpg"],
-//   },
-// ];
-
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const filteredProjects =
-    selectedCategory === "All"
-      ? projects
-      : projects.filter((project) => project.category === selectedCategory);
+  const filteredProjects = selectedCategory === "All" ? projects : projects.filter(project => project.categories.includes(selectedCategory as "Flutter" | "UI/UX" | "Graphic"));
 
   return (
     <div className="min-h-screen flex justify-center px-4 sm:px-6 lg:px-8">
@@ -265,56 +175,14 @@ export default function Projects() {
             onChange={(e) => setSelectedCategory(e.target.value)}
             className="border border-gray-300 text-sm rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
             style={{
-              // Apply gradient text only if NOT 'All'
-              backgroundImage:
-                selectedCategory !== "All" ? gradientColors : "none",
-              color: selectedCategory !== "All" ? "transparent" : "#000",
-              backgroundClip: selectedCategory !== "All" ? "text" : "unset",
-              WebkitBackgroundClip:
-                selectedCategory !== "All" ? "text" : "unset",
               fontWeight: "600",
-              borderColor: "#ccc", // ensure border is visible
+              borderColor: "#ccc"
             }}
           >
-            <option
-              value="All"
-              style={{
-                backgroundColor: "white",
-                color: "#000",
-                // Reset gradient clipping on options so they appear normal
-                backgroundClip: "unset",
-                WebkitBackgroundClip: "unset",
-              }}
-            >
-              All
-            </option>
-            <option
-              value="Flutter"
-              style={{
-                backgroundColor: "white",
-                color: "#000",
-              }}
-            >
-              Flutter
-            </option>
-            <option
-              value="UI/UX"
-              style={{
-                backgroundColor: "white",
-                color: "#000",
-              }}
-            >
-              UI/UX
-            </option>
-            <option
-              value="Graphic"
-              style={{
-                backgroundColor: "white",
-                color: "#000",
-              }}
-            >
-              Graphic
-            </option>
+            <option value="All">All</option>
+            <option value="Flutter">Flutter</option>
+            <option value="UI/UX">UI/UX</option>
+            <option value="Graphic">Graphic</option>
           </select>
         </motion.div>
 
