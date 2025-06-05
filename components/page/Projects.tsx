@@ -45,7 +45,8 @@ const projects: Project[] = [
   },
   {
     title: "Westgate Pest Control",
-    description: "A responsive web app for pest control services built with Flutter and Firebase.",
+    description:
+      "A responsive web app for pest control services built with Flutter and Firebase.",
     categories: ["Flutter"],
     features: [
       "100+ visitors in first month with 99.9% uptime.",
@@ -58,71 +59,9 @@ const projects: Project[] = [
     images: ["/images/westgate_project.png"],
   },
   {
-    title: "Attendance Tracker",
-    description: "A Flutter app for attendance marking and leave tracking.",
-    categories: ["Flutter"],
-    features: [
-      "Provider and SharedPreferences for fast data loading.",
-      "Table Calendar with smooth animations.",
-      "Real-time attendance tracking.",
-    ],
-    links: {
-      github: "https://github.com/your-username/attendance-tracker",
-    },
-    images: ["/images/2.jpg"],
-  },
-  {
-    title: "VendorHub",
-    description:
-      "Multi-vendor service app built with Flutter using Provider and Dio.",
-    categories: ["Flutter", "UI/UX"],
-    features: [
-      "Flutter + Dio for API integration.",
-      "Provider for scalable state management.",
-      "Vendor selection, web support, custom UI components.",
-    ],
-    links: {
-      github: "https://github.com/your-username/vendorhub",
-      figma: "https://www.figma.com/file/vendorhub-design",
-    },
-    images: ["/images/vendorhub.jpg"],
-  },
-  {
-    title: "Pizza Deck",
-    description:
-      "A Flutter food ordering app available on Android, iOS, and Web.",
-    categories: ["Flutter", "UI/UX"],
-    features: [
-      "SliverAppBar, SnakeNavBar, login/OTP screens, Dio API integration.",
-      "Custom snackbars, responsive UI, animated splash screen.",
-      "Supports Play Store, App Store, and Web.",
-    ],
-    links: {
-      playstore:
-        "https://play.google.com/store/apps/details?id=com.example.pizzadeck",
-      figma: "https://www.figma.com/file/pizzadeck-design",
-    },
-    images: ["/images/pizzadeck.jpg"],
-  },
-  {
-    title: "Digital Farmer",
-    description: "A dashboard concept for a farming management system.",
-    categories: ["Flutter", "UI/UX"],
-    features: [
-      "Figma UI dashboard with charts, widgets, and form flows.",
-      "Modular components and clean design system.",
-      "Integrated auth flow and responsive layout plans.",
-    ],
-    links: {
-      figma: "https://www.figma.com/file/your-design-link",
-       github: "https://github.com/your-username/attendance-tracker",
-    },
-    images: ["/images/3.jpg"],
-  },
-  
-  {
     title: "MOHVAX – Child Vaccination App",
-    description: "A mobile app design for tracking child vaccinations and health records.",
+    description:
+      "A mobile app design for tracking child vaccinations and health records.",
     categories: ["UI/UX"],
     features: [
       "Helps parents track vaccinations and child growth.",
@@ -133,8 +72,71 @@ const projects: Project[] = [
       figma:
         "https://www.figma.com/design/W92Qnrghryl6ItLkUZA8es/MOHVAX--A-Child-Vaccination-Mobile-App?node-id=0-1&t=MNTjMf7IKgt4cZ3g-1",
     },
-    images: ["/images/mohvax.jpg"],
+    images: ["/images/mohvax_new.jpg"],
   },
+  // {
+  //   title: "Attendance Tracker",
+  //   description: "A Flutter app for attendance marking and leave tracking.",
+  //   categories: ["Flutter"],
+  //   features: [
+  //     "Provider and SharedPreferences for fast data loading.",
+  //     "Table Calendar with smooth animations.",
+  //     "Real-time attendance tracking.",
+  //   ],
+  //   links: {
+  //     github: "https://github.com/your-username/attendance-tracker",
+  //   },
+  //   images: ["/images/2.jpg"],
+  // },
+  // {
+  //   title: "VendorHub",
+  //   description:
+  //     "Multi-vendor service app built with Flutter using Provider and Dio.",
+  //   categories: ["Flutter", "UI/UX"],
+  //   features: [
+  //     "Flutter + Dio for API integration.",
+  //     "Provider for scalable state management.",
+  //     "Vendor selection, web support, custom UI components.",
+  //   ],
+  //   links: {
+  //     github: "https://github.com/your-username/vendorhub",
+  //     figma: "https://www.figma.com/file/vendorhub-design",
+  //   },
+  //   images: ["/images/vendorhub.jpg"],
+  // },
+  // {
+  //   title: "Pizza Deck",
+  //   description:
+  //     "A Flutter food ordering app available on Android, iOS, and Web.",
+  //   categories: ["Flutter", "UI/UX"],
+  //   features: [
+  //     "SliverAppBar, SnakeNavBar, login/OTP screens, Dio API integration.",
+  //     "Custom snackbars, responsive UI, animated splash screen.",
+  //     "Supports Play Store, App Store, and Web.",
+  //   ],
+  //   links: {
+  //     playstore:
+  //       "https://play.google.com/store/apps/details?id=com.example.pizzadeck",
+  //     figma: "https://www.figma.com/file/pizzadeck-design",
+  //   },
+  //   images: ["/images/pizzadeck.jpg"],
+  // },
+  // {
+  //   title: "Digital Farmer",
+  //   description: "A dashboard concept for a farming management system.",
+  //   categories: ["Flutter", "UI/UX"],
+  //   features: [
+  //     "Figma UI dashboard with charts, widgets, and form flows.",
+  //     "Modular components and clean design system.",
+  //     "Integrated auth flow and responsive layout plans.",
+  //   ],
+  //   links: {
+  //     figma: "https://www.figma.com/file/your-design-link",
+  //     github: "https://github.com/your-username/attendance-tracker",
+  //   },
+  //   images: ["/images/3.jpg"],
+  // },
+
   {
     title: "Graphic Design Showcase",
     description:
@@ -155,7 +157,14 @@ const projects: Project[] = [
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const filteredProjects = selectedCategory === "All" ? projects : projects.filter(project => project.categories.includes(selectedCategory as "Flutter" | "UI/UX" | "Graphic"));
+  const filteredProjects =
+    selectedCategory === "All"
+      ? projects
+      : projects.filter((project) =>
+          project.categories.includes(
+            selectedCategory as "Flutter" | "UI/UX" | "Graphic"
+          )
+        );
 
   return (
     <div className="min-h-screen flex justify-center px-4 sm:px-6 lg:px-8">
@@ -173,10 +182,26 @@ export default function Projects() {
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="border border-gray-300 text-sm rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+            className="
+              bg-white text-sm rounded-lg px-4 py-2.5
+              border-2 border-transparent
+              hover:border-indigo-400
+              focus:outline-none focus:ring-2 focus:ring-transparent
+              cursor-pointer appearance-none
+              transition-all duration-200 ease-in-out
+              font-semibold text-gray-700
+              shadow-sm hover:shadow
+              bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20d%3D%22M5.293%207.293a1%201%200%20011.414%200L10%2010.586l3.293-3.293a1%201%200%20111.414%201.414l-4%204a1%201%200%2001-1.414%200l-4-4a1%201%200%20010-1.414z%22%20fill%3D%22%236B7280%22%2F%3E%3C%2Fsvg%3E')] 
+              bg-[length:1.5em_1.5em]
+              bg-no-repeat bg-[right_0.5rem_center]
+              pr-10
+            "
             style={{
-              fontWeight: "600",
-              borderColor: "#ccc"
+              borderImageSource:
+                "linear-gradient(to right, #29609C, #AA84AE, #F472B6)",
+              borderImageSlice: 1,
+              backgroundClip: "padding-box",
+              WebkitBackgroundClip: "padding-box",
             }}
           >
             <option value="All">All</option>

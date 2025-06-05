@@ -17,7 +17,7 @@ const experiences: Experience[] = [
     title: "Flutter Developer & UI/UX Designer",
     company: "SacredMind Infotech",
     period: "May 2025 – Present",
-    location: "Chandigarh, India",
+    location: "Mohali, India",
     responsibilities: [
       "Designing and developing cross-platform mobile apps using Flutter and Dart.",
       "Creating modern, user-friendly UI with Figma and adhering to design best practices.",
