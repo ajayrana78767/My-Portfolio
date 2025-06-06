@@ -13,22 +13,22 @@ interface Experience {
 }
 
 const experiences: Experience[] = [
-  {
-    title: "Flutter Developer & UI/UX Designer",
-    company: "SacredMind Infotech",
-    period: "May 2025 – Present",
-    location: "Mohali, India",
-    responsibilities: [
-      "Designing and developing cross-platform mobile apps using Flutter and Dart.",
-      "Creating modern, user-friendly UI with Figma and adhering to design best practices.",
-      "Collaborating closely with backend and design teams to deliver functional UI/UX.",
-      "Handling end-to-end implementation of both app development and visual design."
-    ]
-  },
+  // {
+  //   title: "Flutter Developer & UI/UX Designer",
+  //   company: "SacredMind Infotech",
+  //   period: "May 2025 – Present",
+  //   location: "Mohali, India",
+  //   responsibilities: [
+  //     "Designing and developing cross-platform mobile apps using Flutter and Dart.",
+  //     "Creating modern, user-friendly UI with Figma and adhering to design best practices.",
+  //     "Collaborating closely with backend and design teams to deliver functional UI/UX.",
+  //     "Handling end-to-end implementation of both app development and visual design."
+  //   ]
+  // },
   {
     title: "Flutter Developer",
     company: "Numerogen Solutions",
-    period: "Jan 2024 – Apr 2025",
+    period: "Jan 2024 – Present",
     location: "Una, Himachal Pradesh",
     responsibilities: [
       "Independently handled 5+ Flutter projects end-to-end with 99.9% crash-free rate.",
