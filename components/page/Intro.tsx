@@ -65,7 +65,7 @@ export default function Intro() {
                   href="mailto:ajaykumar.devdesign@gmail.com"
                   className="hover:underline focus:underline focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded"
                 >
-                  ajaykumar.devdesign@gmail.com
+                  ajaykumar.flutterdev@gmail.com
                 </a>{" "}
                 | Una, Himachal Pradesh, India
               </motion.address>
