@@ -43,6 +43,23 @@ const projects: Project[] = [
     },
     images: ["/images/Airline_project.png"],
   },
+   {
+    title: "Sacred Mind ",
+    description:
+      "Designed the UI/UX and developing a Flutter app for a startup, focusing on user experience and performance.",
+    categories: ["UI/UX", "Flutter"],
+     features: [
+       "Created intuitive UI/UX based on user needs.",
+       "Flutter development in progress.",
+       "Worked closely with stakeholders for refinement.",
+    ],
+    links: {
+      figma:
+        "https://www.figma.com/design/sRLDg30P6L9iGRB7V5jZ1p/Sacred-Mind?node-id=0-1&t=EdNGfpwN4EHUsSKH-1",
+      github: "https://github.com/ajayrana78767/Sacred-Mind-Application",
+    },
+    images: ["/images/Sacred_mind.png"],
+  },
   {
     title: "Westgate Pest Control",
     description:
