@@ -186,20 +186,25 @@ export default function DesignGallery() {
       </div>
 
       {/* Scroll to Top Button */}
-      <a
+      <motion.a
         href="#top"
-        className="fixed bottom-6 left-6 z-20 bg-[#00F5A0]/20 text-[#00F5A0] py-2 px-4 rounded-full shadow hover:bg-[#00F5A0]/30 hover:text-white transition"
+        className="fixed bottom-6 left-6 z-20 bg-gradient-to-r from-[#00F5A0]/80 to-[#00D9F5]/80 text-black py-2 px-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-md border border-white/20 hover:border-white/40 hover:from-[#00F5A0] hover:to-[#00D9F5] group"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
         aria-label="Scroll to top"
       >
-        ↑ Top
-      </a>
+        <span className="flex items-center gap-2">
+          <span className="transform group-hover:-translate-y-0.5 transition-transform">↑</span>
+          <span>Top</span>
+        </span>
+      </motion.a>
 
       {/* WhatsApp Contact Button */}
       <motion.a
         href="https://wa.me/917876740036?text=Hi%20there%2C%20I%20saw%20your%20graphic%20design%20work%20and%20would%20like%20to%20connect."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-20 bg-[#00D9F5]/20 text-[#00D9F5] font-semibold py-2 px-5 rounded-full shadow-xl hover:bg-[#00D9F5]/30 hover:text-white transition"
+        className="fixed bottom-6 right-6 z-20 bg-gradient-to-r from-[#00D9F5]/80 to-[#00F5A0]/80 text-black font-semibold py-2 px-5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 backdrop-blur-md border border-white/20 hover:border-white/40 hover:from-[#00D9F5] hover:to-[#00F5A0] group"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => {
@@ -212,7 +217,10 @@ export default function DesignGallery() {
         }}
         aria-label="Contact via WhatsApp"
       >
-        Contact Me
+        <span className="flex items-center gap-2">
+          <span>Contact Me</span>
+          <span className="transform group-hover:translate-x-0.5 transition-transform">→</span>
+        </span>
       </motion.a>
     </div>
   );

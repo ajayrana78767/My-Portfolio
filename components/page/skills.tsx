@@ -9,11 +9,11 @@ const skills = [
   { src: '/images/flutter.svg', alt: 'Flutter', label: 'Flutter' },
   { src: '/images/dart.svg', alt: 'Dart', label: 'Dart' },
   { src: '/images/firebase.svg', alt: 'Firebase', label: 'Firebase' },
-  { src: '/images/restapi.svg', alt: 'REST API', label: 'REST API' },
+  { src: '/images/Api.png', alt: 'REST API', label: 'REST API' },
   { src: '/images/dart.svg', alt: 'Provider', label: 'Provider' },
   { src: '/images/figma.svg', alt: 'Figma', label: 'Figma' },
   { src: '/images/photoshop.svg', alt: 'Photoshop', label: 'Photoshop' },
-  { src: '/images/canva.svg', alt: 'Canva', label: 'Canva' },
+  { src: '/images/canva.png', alt: 'Canva', label: 'Canva' },
   { src: '/images/github.svg', alt: 'GitHub', label: 'GitHub' },
   { src: '/images/git.svg', alt: 'Git', label: 'Git' },
   { src: '/images/postman.svg', alt: 'Postman', label: 'Postman' },
@@ -125,19 +125,19 @@ export default function Skills() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className={`${TextFonts.JostFont.className} text-3xl font-extrabold bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-transparent bg-clip-text mb-6`}
+          className={`text-4xl sm:text-5xl font-extrabold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-center ${TextFonts.JostFont.className}`}
         >
           Skills & Tools
         </motion.h2>
 
-        <motion.p
+        {/* <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
           className="text-gray-400 max-w-2xl mb-12 text-base leading-relaxed"
         >
           These are the technologies and tools I use daily to build high-quality apps and solutions.
-        </motion.p>
+        </motion.p> */}
 
         <motion.div
           initial="hidden"
@@ -165,7 +165,7 @@ export default function Skills() {
               style={{ transition: 'all 0.4s ease' }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLDivElement;
-                el.style.borderImage = 'linear-gradient(to right, #29609C, #AA84AE, #F472B6)';
+                el.style.borderImage = 'linear-gradient(135deg, #00F5A0, #00D9F5)';
                 el.style.borderImageSlice = '1';
               }}
               onMouseLeave={(e) => {
