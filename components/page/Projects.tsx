@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import TextFonts from "@/app/fonts/fonts";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
+
 const gradientColors = "linear-gradient(to right, #29609C, #AA84AE, #F472B6)";
 
 interface Project {
@@ -171,6 +172,75 @@ const projects: Project[] = [
   },
 ];
 
+const BackgroundEffects = () => {
+  return (
+    <>
+      {/* Radial Gradient Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent"></div>
+
+      {/* Grid Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+
+      {/* Animated Particles */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        {[...Array(40)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-[#00F5A0]/30 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+              scale: Math.random() * 2,
+              opacity: Math.random() * 0.5 + 0.3,
+            }}
+            animate={{
+              y: [null, Math.random() * window.innerHeight],
+              x: [null, Math.random() * window.innerWidth],
+              scale: [null, Math.random() * 2 + 1],
+              opacity: [null, Math.random() * 0.5 + 0.3],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Glowing Orbs */}
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#00F5A0]/10 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#00D9F5]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-[#00F5A0]/5 rounded-full blur-3xl animate-pulse delay-2000"></div>
+
+      <style jsx global>{`
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 0.5;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.8;
+            transform: scale(1.1);
+          }
+        }
+
+        .animate-pulse {
+          animation: pulse 4s ease-in-out infinite;
+        }
+
+        .delay-1000 {
+          animation-delay: 1s;
+        }
+
+        .delay-2000 {
+          animation-delay: 2s;
+        }
+      `}</style>
+    </>
+  );
+};
+
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
@@ -184,13 +254,22 @@ export default function Projects() {
         );
 
   return (
-    <div className="min-h-screen flex justify-center px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-4xl">
+    <div className="min-h-screen flex justify-center px-4 sm:px-6 lg:px-8 py-12 bg-[#0a0a0a] relative overflow-hidden">
+      <BackgroundEffects />
+      <div className="w-full max-w-4xl relative z-10">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className={`text-4xl sm:text-5xl font-extrabold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-center ${TextFonts.JostFont.className}`}
+        >
+          Projects
+        </motion.h2>
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="flex justify-between items-center mt-20"
+          className="flex justify-between items-center mt-10"
         >
           <h2 className={`text-3xl font-bold ${TextFonts.JostFont.className}`}>
             MY WORK
@@ -200,31 +279,27 @@ export default function Projects() {
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
             className="
-              bg-white text-sm rounded-lg px-4 py-2.5
-              border-2 border-transparent
-              hover:border-indigo-400
-              focus:outline-none focus:ring-2 focus:ring-transparent
+              bg-black/40 text-white text-sm rounded-lg px-4 py-2.5
+              border border-white/10
+              hover:border-white/30
+              focus:outline-none focus:ring-2 focus:ring-white/20
               cursor-pointer appearance-none
               transition-all duration-200 ease-in-out
-              font-semibold text-gray-700
-              shadow-sm hover:shadow
-              bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20d%3D%22M5.293%207.293a1%201%200%20011.414%200L10%2010.586l3.293-3.293a1%201%200%20111.414%201.414l-4%204a1%201%200%2001-1.414%200l-4-4a1%201%200%20010-1.414z%22%20fill%3D%22%236B7280%22%2F%3E%3C%2Fsvg%3E')] 
+              font-semibold
+              shadow-lg hover:shadow-xl
+              bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20d%3D%22M5.293%207.293a1%201%200%20011.414%200L10%2010.586l3.293-3.293a1%201%200%20111.414%201.414l-4%204a1%201%200%2001-1.414%200l-4-4a1%201%200%20010-1.414z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3C%2Fsvg%3E')] 
               bg-[length:1.5em_1.5em]
               bg-no-repeat bg-[right_0.5rem_center]
               pr-10
             "
             style={{
-              borderImageSource:
-                "linear-gradient(to right, #29609C, #AA84AE, #F472B6)",
-              borderImageSlice: 1,
-              backgroundClip: "padding-box",
-              WebkitBackgroundClip: "padding-box",
+              colorScheme: 'dark'
             }}
           >
-            <option value="All">All</option>
-            <option value="Flutter">Flutter</option>
-            <option value="UI/UX">UI/UX</option>
-            <option value="Graphic">Graphic</option>
+            <option value="All" className="bg-black text-white">All</option>
+            <option value="Flutter" className="bg-black text-white">Flutter</option>
+            <option value="UI/UX" className="bg-black text-white">UI/UX</option>
+            <option value="Graphic" className="bg-black text-white">Graphic</option>
           </select>
         </motion.div>
 
@@ -244,16 +319,16 @@ export default function Projects() {
               <CardContainer className="inter-var">
                 <CardBody
                   className="
-      relative w-full h-[520px] flex flex-col justify-between rounded-2xl p-6
-      bg-gray-50 shadow-neumorph hover:shadow-neumorph-hover
-      transition-shadow duration-300 ease-in-out
-      cursor-pointer transform hover:scale-[1.03]
-    "
+                    relative w-full h-[520px] flex flex-col justify-between rounded-2xl p-6
+                    bg-white/5 backdrop-blur-xl border border-white/10
+                    shadow-lg transition-transform duration-300 ease-in-out
+                    cursor-pointer transform hover:scale-[1.02]
+                  "
                 >
                   <div className="flex-grow flex flex-col justify-between">
                     <CardItem
                       translateZ="50"
-                      className="text-2xl font-extrabold text-neutral-700 leading-tight mb-2"
+                      className="text-2xl font-extrabold text-white leading-tight mb-2"
                     >
                       {project.title}
                     </CardItem>
@@ -261,7 +336,7 @@ export default function Projects() {
                     <CardItem
                       as="p"
                       translateZ="60"
-                      className="text-neutral-600 text-sm max-w-full mb-4 opacity-90 transition-opacity duration-400"
+                      className="text-gray-300 text-sm max-w-full mb-4 opacity-90 transition-opacity duration-400"
                     >
                       {project.description}
                     </CardItem>
@@ -270,7 +345,7 @@ export default function Projects() {
                       initial={{ opacity: 0, y: 5 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.5, duration: 0.4 }}
-                      className="list-disc list-inside text-neutral-500 text-xs max-w-full space-y-1"
+                      className="list-disc list-inside text-gray-400 text-xs max-w-full space-y-1"
                     >
                       {project.features.map((feature, i) => (
                         <li key={i}>{feature}</li>
@@ -314,7 +389,7 @@ export default function Projects() {
                         as={Link}
                         href={project.links.demo}
                         target="__blank"
-                        className="btn-link-purple"
+                        className="text-sm font-semibold px-4 py-2 rounded-md text-white border border-white/30 bg-white/5 hover:bg-white/10 transition-colors duration-300"
                       >
                         Demo →
                       </CardItem>
@@ -325,7 +400,7 @@ export default function Projects() {
                         as={Link}
                         href={project.links.playstore}
                         target="__blank"
-                        className="btn-link-green"
+                        className="text-sm font-semibold px-4 py-2 rounded-md text-white border border-white/30 bg-white/5 hover:bg-white/10 transition-colors duration-300"
                       >
                         Play Store →
                       </CardItem>
@@ -336,7 +411,7 @@ export default function Projects() {
                         as={Link}
                         href={project.links.appstore}
                         target="__blank"
-                        className="btn-link-blue"
+                        className="text-sm font-semibold px-4 py-2 rounded-md text-white border border-white/30 bg-white/5 hover:bg-white/10 transition-colors duration-300"
                       >
                         App Store →
                       </CardItem>
@@ -347,7 +422,7 @@ export default function Projects() {
                         as={Link}
                         href={project.links.github}
                         target="__blank"
-                        className="btn-link-black"
+                        className="text-sm font-semibold px-4 py-2 rounded-md text-white border border-white/30 bg-white/5 hover:bg-white/10 transition-colors duration-300"
                       >
                         View Repo
                       </CardItem>
@@ -358,7 +433,7 @@ export default function Projects() {
                         as={Link}
                         href={project.links.figma}
                         target="__blank"
-                        className="btn-link-pink"
+                        className="text-sm font-semibold px-4 py-2 rounded-md text-white border border-white/30 bg-white/5 hover:bg-white/10 transition-colors duration-300"
                       >
                         View Design
                       </CardItem>
@@ -369,7 +444,7 @@ export default function Projects() {
                         as={Link}
                         href="/graphic-work"
                         scroll={false}
-                        className="btn-link-blue"
+                        className="text-sm font-semibold px-4 py-2 rounded-md text-white border border-white/30 bg-white/5 hover:bg-white/10 transition-colors duration-300"
                       >
                         View Graphic Work
                       </CardItem>
