@@ -1,3 +1,4 @@
+'use client';
 import Achievements from "@/components/page/achievements";
 import Intro from "@/components/page/Intro";
 import Skills from "@/components/page/skills";

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextFonts from "@/app/fonts/fonts";
 
 interface Experience {
@@ -125,51 +125,58 @@ const ExperienceItem = ({
     </motion.article>
   );
 };
-
 const BackgroundEffects = () => {
+  const [particles, setParticles] = useState<JSX.Element[]>([]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    const newParticles = [...Array(40)].map((_, i) => (
+      <motion.div
+        key={i}
+        className="absolute w-1 h-1 bg-[#00F5A0]/30 rounded-full"
+        initial={{
+          x: Math.random() * width,
+          y: Math.random() * height,
+          scale: Math.random() * 2,
+          opacity: Math.random() * 0.5 + 0.3,
+        }}
+        animate={{
+          y: [null, Math.random() * height],
+          x: [null, Math.random() * width],
+          scale: [null, Math.random() * 2 + 1],
+          opacity: [null, Math.random() * 0.5 + 0.3],
+        }}
+        transition={{
+          duration: Math.random() * 10 + 10,
+          repeat: Infinity,
+          ease: 'linear',
+        }}
+      />
+    ));
+
+    setParticles(newParticles);
+  }, []);
+
   return (
     <>
-      {/* Radial Gradient Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent"></div>
 
-      {/* Grid Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]"></div>
 
-      {/* Animated Particles */}
-      <div className="absolute inset-0 overflow-hidden z-0">
-        {[...Array(40)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-[#00F5A0]/30 rounded-full"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              scale: Math.random() * 2,
-              opacity: Math.random() * 0.5 + 0.3,
-            }}
-            animate={{
-              y: [null, Math.random() * window.innerHeight],
-              x: [null, Math.random() * window.innerWidth],
-              scale: [null, Math.random() * 2 + 1],
-              opacity: [null, Math.random() * 0.5 + 0.3],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          />
-        ))}
-      </div>
+      <div className="absolute inset-0 overflow-hidden z-0">{particles}</div>
 
-      {/* Glowing Orbs */}
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#00F5A0]/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#00D9F5]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-[#00F5A0]/5 rounded-full blur-3xl animate-pulse delay-2000"></div>
 
       <style jsx global>{`
         @keyframes pulse {
-          0%, 100% {
+          0%,
+          100% {
             opacity: 0.5;
             transform: scale(1);
           }

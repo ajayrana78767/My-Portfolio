@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 
 export default function Intro() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const typedText = useTypingEffect(
     ["Flutter", "Firebase", "Figma"],
     100,
@@ -21,8 +22,26 @@ export default function Intro() {
       setIsScrolled(window.scrollY > 50);
     };
 
+    const updateDimensions = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+
+    // Initial updates
+    updateDimensions();
+    handleScroll();
+
+    // Add event listeners
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', updateDimensions);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateDimensions);
+    };
   }, []);
 
   return (
@@ -37,19 +56,19 @@ export default function Intro() {
         
         {/* Animated particles */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(40)].map((_, i) => (
+          {dimensions.width > 0 && [...Array(40)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-[#00F5A0]/30 rounded-full"
               initial={{
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
+                x: Math.random() * dimensions.width,
+                y: Math.random() * dimensions.height,
                 scale: Math.random() * 2,
                 opacity: Math.random() * 0.5 + 0.3,
               }}
               animate={{
-                y: [null, Math.random() * window.innerHeight],
-                x: [null, Math.random() * window.innerWidth],
+                y: [null, Math.random() * dimensions.height],
+                x: [null, Math.random() * dimensions.width],
                 scale: [null, Math.random() * 2 + 1],
                 opacity: [null, Math.random() * 0.5 + 0.3],
               }}
@@ -324,7 +343,7 @@ export default function Intro() {
         }
 
         ::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(135deg, #00F5A0, #00D9F5);
+          background: linear-gradient(135deg, #00D9F5, #00F5A0);
         }
       `}</style>
     </>

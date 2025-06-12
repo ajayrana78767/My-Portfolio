@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import TextFonts from '@/app/fonts/fonts';
+import { useState, useEffect } from 'react';
 
 const skills = [
   { src: '/images/flutter.svg', alt: 'Flutter', label: 'Flutter' },
@@ -23,72 +24,94 @@ const skills = [
   { src: '/images/responsive.svg', alt: 'Responsive UI', label: 'Responsive UI' },
 ];
 
-const BackgroundEffects = () => (
-  <>
-    {/* Radial Gradient Background */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent"></div>
+const BackgroundEffects = () => {
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
-    {/* Grid Overlay */}
-    <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+  useEffect(() => {
+    const updateDimensions = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
 
-    {/* Animated Particles */}
-    <div className="absolute inset-0 overflow-hidden z-0">
-      {[...Array(40)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-1 h-1 bg-[#00F5A0]/30 rounded-full"
-          initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            scale: Math.random() * 2,
-            opacity: Math.random() * 0.5 + 0.3,
-          }}
-          animate={{
-            y: [null, Math.random() * window.innerHeight],
-            x: [null, Math.random() * window.innerWidth],
-            scale: [null, Math.random() * 2 + 1],
-            opacity: [null, Math.random() * 0.5 + 0.3],
-          }}
-          transition={{
-            duration: Math.random() * 10 + 10,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-        />
-      ))}
-    </div>
+    // Initial update
+    updateDimensions();
 
-    {/* Glowing Orbs */}
-    <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#00F5A0]/10 rounded-full blur-3xl animate-pulse"></div>
-    <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#00D9F5]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-    <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-[#00F5A0]/5 rounded-full blur-3xl animate-pulse delay-2000"></div>
+    // Add event listener for window resize
+    window.addEventListener('resize', updateDimensions);
 
-    <style jsx global>{`
-      @keyframes pulse {
-        0%, 100% {
-          opacity: 0.5;
-          transform: scale(1);
+    // Cleanup
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
+  return (
+    <>
+      {/* Radial Gradient Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent"></div>
+
+      {/* Grid Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+
+      {/* Animated Particles */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        {dimensions.width > 0 && [...Array(40)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-[#00F5A0]/30 rounded-full"
+            initial={{
+              x: Math.random() * dimensions.width,
+              y: Math.random() * dimensions.height,
+              scale: Math.random() * 2,
+              opacity: Math.random() * 0.5 + 0.3,
+            }}
+            animate={{
+              y: [null, Math.random() * dimensions.height],
+              x: [null, Math.random() * dimensions.width],
+              scale: [null, Math.random() * 2 + 1],
+              opacity: [null, Math.random() * 0.5 + 0.3],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: 'linear',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Glowing Orbs */}
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#00F5A0]/10 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#00D9F5]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-[#00F5A0]/5 rounded-full blur-3xl animate-pulse delay-2000"></div>
+
+      <style jsx global>{`
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 0.5;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.8;
+            transform: scale(1.1);
+          }
         }
-        50% {
-          opacity: 0.8;
-          transform: scale(1.1);
+
+        .animate-pulse {
+          animation: pulse 4s ease-in-out infinite;
         }
-      }
 
-      .animate-pulse {
-        animation: pulse 4s ease-in-out infinite;
-      }
+        .delay-1000 {
+          animation-delay: 1s;
+        }
 
-      .delay-1000 {
-        animation-delay: 1s;
-      }
-
-      .delay-2000 {
-        animation-delay: 2s;
-      }
-    `}</style>
-  </>
-);
+        .delay-2000 {
+          animation-delay: 2s;
+        }
+      `}</style>
+    </>
+  );
+};
 
 export default function Skills() {
   return (
@@ -102,18 +125,19 @@ export default function Skills() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-className={`${TextFonts.JostFont.className} text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-transparent bg-clip-text mb-10 text-center`}        >
+          className={`${TextFonts.JostFont.className} text-3xl font-extrabold bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-transparent bg-clip-text mb-6`}
+        >
           Skills & Tools
         </motion.h2>
 
-        {/* <motion.p
+        <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
           className="text-gray-400 max-w-2xl mb-12 text-base leading-relaxed"
         >
           These are the technologies and tools I use daily to build high-quality apps and solutions.
-        </motion.p> */}
+        </motion.p>
 
         <motion.div
           initial="hidden"
@@ -141,7 +165,7 @@ className={`${TextFonts.JostFont.className} text-4xl sm:text-5xl font-extrabold 
               style={{ transition: 'all 0.4s ease' }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget as HTMLDivElement;
-                el.style.borderImage = 'linear-gradient(135deg, #00F5A0, #00D9F5)';
+                el.style.borderImage = 'linear-gradient(to right, #29609C, #AA84AE, #F472B6)';
                 el.style.borderImageSlice = '1';
               }}
               onMouseLeave={(e) => {

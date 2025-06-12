@@ -181,8 +181,8 @@ const BackgroundEffects = () => {
       {/* Grid Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]"></div>
 
-      {/* Animated Particles */}
-      <div className="absolute inset-0 overflow-hidden z-0">
+      Animated Particles
+      {/* <div className="absolute inset-0 overflow-hidden z-0">
         {[...Array(40)].map((_, i) => (
           <motion.div
             key={i}
@@ -206,7 +206,7 @@ const BackgroundEffects = () => {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       {/* Glowing Orbs */}
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#00F5A0]/10 rounded-full blur-3xl animate-pulse"></div>
