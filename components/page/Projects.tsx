@@ -501,7 +501,7 @@ const projects: Project[] = [
     links: {
       github: "https://github.com/ajayrana78767/altis_hospital",
     },
-    images: ["/images/Altis_Hospital1.png"],
+    images: ["/images/Altis_hospital.png"],
   },
   {
     title: "Airline Miles Calculator",
