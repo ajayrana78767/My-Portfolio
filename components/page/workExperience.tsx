@@ -14,28 +14,34 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    title: "Flutter Developer",
+    title: "Flutter Developer & UI/UX Designer",
     company: "Numerogen Solutions",
     period: "Jan 2024 – Present",
     location: "Una, Himachal Pradesh",
     responsibilities: [
-      "Independently handled 5+ Flutter projects end-to-end with 99.9% crash-free rate.",
-      "Developed apps like Attendance App, Airline Miles Calculator & Labour Assessment App.",
-      "Integrated Firebase Auth, Firestore, and Push Notifications for real-time features.",
-      "Improved app performance by 25% using efficient state management (Provider)."
-    ]
+      "Delivered 5+ Flutter apps, including Attendance, Labour Assessment, and Airline Miles Calculator, adopted by 100+ users with 90%+ positive feedback.",
+      "Optimized apps with 25% faster load times and 99.9% crash-free sessions using Flutter, Provider, and Firebase. ",
+      "Leading development of Altis Hospital App, including Razorpay integration (final release in progress).",
+      //   "Independently handled 5+ Flutter projects end-to-end with 99.9% crash-free rate.",
+      //   "Developed apps like Attendance App, Airline Miles Calculator & Labour Assessment App.",
+      //   "Integrated Firebase Auth, Firestore, and Push Notifications for real-time features.",
+      //   "Improved app performance by 25% using efficient state management (Provider).",
+    ],
   },
   {
-    title: "Flutter Trainee",
+    title: "Flutter & UI/UX Trainee",
     company: "Numerogen Solutions",
     period: "Jun 2023 – Dec 2023",
     location: "Una, Himachal Pradesh",
     responsibilities: [
-      "Trained on core Flutter concepts and built 3+ production-level apps.",
-      "Practiced clean architecture, REST API integration using Dio, and state management.",
-      "Contributed to real-world client projects with strong UI/UX collaboration."
-    ]
-  }
+      // "Trained on core Flutter concepts and built 3+ production-level apps.",
+      // "Practiced clean architecture, REST API integration using Dio, and state management.",
+      // "Contributed to real-world client projects with strong UI/UX collaboration.",
+      "Transitioned from BBA to Flutter, contributing to 3+ apps with REST APIs, Provider, and performance improvements.",
+      "Designed wireframes & user flows, improving usability by 25%. ",
+      "Assisted in debugging, API integrations, and design alignment with product needs.",
+    ],
+  },
 ];
 
 const ExperienceItem = ({
@@ -60,8 +66,8 @@ const ExperienceItem = ({
         visible: { opacity: 1, y: 0 }
       }}
       className="
-        bg-white/5 backdrop-blur-xl border border-white/10
-        rounded-xl p-6 transition-all duration-300 shadow-lg hover:shadow-xl
+          bg-white/5 backdrop-blur-xl border border-white/10
+          rounded-3xl p-8 md:p-12 transition-all duration-300 shadow-lg hover:shadow-xl
       "
     >
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
@@ -206,15 +212,15 @@ const WorkExperience = () => {
   return (
     <section
       id="work-experience"
-      className="relative min-h-screen bg-[#0a0a0a] py-12 px-4 sm:px-6 lg:px-8 flex justify-center overflow-hidden"
+      className="relative flex min-h-screen w-full items-center justify-center bg-[#0a0a0a] px-6 py-24 sm:px-8 md:px-16 lg:px-20 xl:px-24"
     >
       <BackgroundEffects />
-      <div className="relative z-10 w-full max-w-4xl">
+      <div className="relative z-10 w-full max-w-5xl">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className={`text-4xl sm:text-5xl font-extrabold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] text-center ${TextFonts.JostFont.className}`}
+      className={`text-center text-4xl sm:text-5xl font-extrabold mb-16 text-transparent bg-clip-text bg-gradient-to-r from-[#00F5A0] to-[#00D9F5] ${TextFonts.JostFont.className}`}
         >
           WORK EXPERIENCE
         </motion.h2>
@@ -229,7 +235,7 @@ const WorkExperience = () => {
               transition: { staggerChildren: 0.3 }
             }
           }}
-          className="space-y-10"
+         className="space-y-12"
         >
           {experiences.map((experience, i) => (
             <ExperienceItem key={i} experience={experience} index={i} />
