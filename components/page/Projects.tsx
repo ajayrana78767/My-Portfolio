@@ -494,24 +494,25 @@ const projects: Project[] = [
       "A hospital management app with appointment booking, notifications, and integrated payments.",
     categories: ["Flutter"],
     features: [
-      "Built a hospital management app with appointment booking & notifications. ",
-      "Integrated Razorpay (payment gateway – in final release phase). ",
-      "Distributed test builds to users; received strong positive feedback. ",
+      "Appointment booking & notifications.",
+      "Razorpay payment integration.",
+      "Test builds shared; positive user feedback.",
     ],
     links: {
       github: "https://github.com/ajayrana78767/altis_hospital",
     },
     images: ["/images/Altis_hospital.png"],
   },
+
   {
     title: "Airline Miles Calculator",
     description:
       "A mobile app that helps users easily calculate how many airline miles they can earn or redeem on different airlines.",
     categories: ["Flutter"],
     features: [
-      "50+ downloads with a 4+ rating on Android & iOS.",
-      "Used Provider and Tawk.to to boost engagement by 30%.",
-      "Enhanced UI and performance for better user experience.",
+      "50+ downloads, 4+ rating",
+      "Provider & Tawk.to for engagement",
+      "Improved UI & performance",
     ],
     links: {
       playstore:
@@ -569,6 +570,23 @@ const projects: Project[] = [
     },
     images: ["/images/mohvax_new.jpg"],
   },
+  {
+    title: "Website UI Showcase – Mockups",
+    description: "Modern and responsive website UI mockups designed in Figma.",
+    categories: ["UI/UX"],
+    features: [
+      "Responsive designs for desktop & mobile.",
+      "Clean typography, spacing, and grid layout.",
+      "Covers portfolio, e-commerce, and SaaS websites.",
+    ],
+
+    links: {
+      figma:
+        "https://www.figma.com/design/tuuudWxcfoPS7H9XV46SIX/Website-UI-Showcase-%E2%80%93-Mockups?node-id=0-1&t=6olR5dOu8I1glkwI-1",
+    },
+    images: ["/images/website_ui_showcase.png"],
+  },
+
   {
     title: "Graphic Design Showcase",
     description:
